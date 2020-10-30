@@ -40,7 +40,12 @@ app.get("/api/workouts/range", (req, res) => {
 })
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+});
 
 app.listen(3000, () => {
     console.log("App running on port 3000!");
