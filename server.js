@@ -33,8 +33,14 @@ app.get("/api/workouts", (req, res) => {
 })
 
 app.get("/api/workouts/range", (req, res) => {
-    db.Workout.find().then(function(data) {
-        console.log(data)
+        db.Workout.find().then(function(data) {
+            console.log(data)
+            res.json(data)
+        })
+    })
+    //add workout
+app.post("/api/workouts", (req, res) => {
+    db.Workout.create(req.body).then(function(data) {
         res.json(data)
     })
 })
