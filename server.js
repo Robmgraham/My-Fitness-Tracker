@@ -13,7 +13,7 @@ app.use(express.static("public"));
 const db = require("./models")
 
 
-
+//routes for pages
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/index.html"));
 });
@@ -24,6 +24,10 @@ app.get("/stats", (req, res) => {
 app.get("/exercise", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/exercise.html"));
 });
+
+
+// fetches
+
 
 app.get("/api/workouts", (req, res) => {
     db.Workout.find().then(function(data) {
@@ -39,8 +43,8 @@ app.get("/api/workouts/range", (req, res) => {
         })
     })
     //add workout
-app.post("/api/workouts", (req, res) => {
-    db.Workout.create(req.body).then(function(data) {
+app.put("/api/workouts/:id", (req, res) {
+    db.Workout.find(req.params.id, { $push: { exercises: req.body } }, { new: true }).then((data) {
         res.json(data)
     })
 })
