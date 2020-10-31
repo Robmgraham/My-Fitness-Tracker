@@ -43,11 +43,11 @@ app.get("/api/workouts/range", (req, res) => {
         })
     })
     //add workout
-app.put("/api/workouts/:id", (req, res) {
-    db.Workout.find(req.params.id, { $push: { exercises: req.body } }, { new: true }).then((data) {
-        res.json(data)
-    })
-})
+    // app.put("/api/workouts/:id", (req, res) {
+    //     db.Workout.find(req.params.id, { $push: { exercises: req.body } }, { new: true }).then((data) {
+    //         res.json(data)
+    //     })
+    // })
 
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
