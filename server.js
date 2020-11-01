@@ -26,29 +26,26 @@ app.get("/exercise", (req, res) => {
 });
 
 
-// fetches
-
-
 app.get("/api/workouts", (req, res) => {
     db.Workout.find().then(function(data) {
         console.log(data)
         res.json(data)
     })
-})
+});
 
 app.get("/api/workouts/range", (req, res) => {
         db.Workout.find().then(function(data) {
             console.log(data)
             res.json(data)
         })
-    })
+    });
 
     //add workout
-    // app.post("/api/workouts/", (req, res) => {
-    //     db.Workout.find(req.params.id, { $push: { id: req.body } }, { new: true }).then((data) {
+    // app.get("/api/workouts/id:", (req, res) => {
+    //     db.Workout.findByIdAndUpdate(req.params.id, { $push: { excercises: req.body } }, { new: true }).then((data) {
     //         res.json(data)
     //     })
-    // })
+    // });
 
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
