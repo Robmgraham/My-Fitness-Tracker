@@ -40,13 +40,7 @@ app.get("/api/workouts/range", (req, res) => {
         })
     });
 
-    //add workout
-    // const id = location.search.split("=")[1];
-    // app.get("/api/workouts/"+ id, (req, res) => {
-    //     db.Workout.findByIdAndUpdate(req.params.id, { $push: { excercises: req.body } }, { new: true }).then((data) {
-    //         res.json(data)
-    //     })
-    // });
+  
     
     app.put("/api/workouts/:id" , function (req, res) {
         db.Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body } }, { new: true })
